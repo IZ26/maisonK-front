@@ -110,4 +110,18 @@
     color:  #D19F94;
     border: 1px solid  #D19F94;
   }
+  @media all and (max-width: 720px) {
+    #form__container{
+      justify-content: center;
+    }
+    .form__bg__left{
+      display: none;
+    }
+    .form__elt{
+      width: 80%;
+    }
+    .input__elt{
+      width: 100%;
+    }
+  }
 </style>

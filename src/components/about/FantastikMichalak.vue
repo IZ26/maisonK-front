@@ -45,6 +45,15 @@
   .about__img img{
     box-shadow: 1px 1px 25px rgba(209, 159, 148,.5);
   }
+  @media all and (max-width: 720px){
+    .about__img{
+      flex-direction: column;
+    }
+    .about__img img{
+      width: 80%;
+      margin-top: 10px;
+    }
+  }
 </style>
 
 

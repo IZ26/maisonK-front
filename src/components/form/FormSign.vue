@@ -3,6 +3,7 @@
     <div class="forms">
       <form class="signup__form" @submit.prevent="signUp">
         <strong class="title">Connexion</strong>
+        <p class="message__error">{{messageErrorLogin}}</p>
         <div class="input__elt">
           <label>Mail</label>
           <input
@@ -25,6 +26,7 @@
       </form>
       <form class="signin__form" @submit.prevent="signIn">
         <strong class="title">Inscription</strong>
+        <p class="message__error">{{messageErrorSignIn}}</p>
         <div class="input__elt">
           <label>Nom</label>
           <input
@@ -66,8 +68,8 @@
           <input
             class="input__field"
             type="password"
-            placeholder="Confirmer votre mot de passe"
-            v-model="confirmpassword"
+            placeholder="Votre mot de passe"
+            v-model="confirmPassword"
           >
         </div>
         <input class="btn" type="submit" value="INSCRIPTION">
@@ -78,6 +80,7 @@
 
 <script>
   import {mapGetters, mapActions} from 'vuex'
+
   export default {
     data() {
       return {
@@ -85,33 +88,45 @@
         lastname: '',
         mail: '',
         password: '',
-        confirmpassword: '',
         mail_login: '',
-        password_login: ''
+        password_login: '',
+        messageErrorLogin: '',
+        messageErrorSignIn: '',
+        confirmPassword: ''
       }
     },
     methods:{
       ...mapActions([
+        'openMenu',
         'userConnect'
       ]),
       signIn() {
-        this.$http.post(`http://localhost:3000/users/signin`, {
-          firstName: this.firstname,
-          lastName: this.lastname,
-          mail: this.mail,
-          password: this.password
-        })
-          .then(res => {
-            this.userConnect(res.data)
-            if(this.$router.go(-1) != '/payment' || this.$router.go(-1) != '/profil'){
-              this.$router.push('/')
-            }else{
-              this.$router.go(-1)
-            }
+        let mail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!mail.test(this.mail)) {
+          this.messageErrorSignIn = "Mail invalide"
+        }
+        else if (this.password != this.confirmPassword) {
+          this.messageErrorSignIn = "Les mots de passe ne correspondent pas"
+        }
+        else {
+          this.$http.post(`http://localhost:3000/users/signin`, {
+            firstName: this.firstname,
+            lastName: this.lastname,
+            mail: this.mail,
+            password: this.password
           })
-          .catch(err => {
-            console.log(err)
-          })
+            .then(res => {
+              this.userConnect(res.data)
+              if (this.$router.go(-1) != '/payment' || this.$router.go(-1) != '/profil') {
+                this.$router.push('/')
+              } else {
+                this.$router.go(-1)
+              }
+            })
+            .catch(err => {
+              console.log(err)
+            })
+        }
       },
       signUp(){
         this.$http.post(`http://localhost:3000/users/login`, {
@@ -120,6 +135,7 @@
         })
           .then(res => {
             this.userConnect(res.data)
+            this.messageErrorLogin = ""
             if(this.$router.go(-1) != '/payment' || this.$router.go(-1) != '/profil'){
               this.$router.push('/')
             }else{
@@ -128,9 +144,13 @@
           })
           .catch(err => {
             console.log(err)
+            this.messageErrorLogin = "Mail ou mot de passe incorrect"
           })
       },
     },
+    mounted(){
+      this.openMenu()
+    }
   }
 </script>
 
@@ -140,6 +160,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .message__error{
+    margin-top: 20px;
+    color: red;
   }
   label {
     font-family: 'Montez';
@@ -195,5 +219,29 @@
   }
   ::placeholder{
     font-size: 10px;
+  }
+  @media all and (max-width: 720px) {
+    .forms{
+      flex-direction: column;
+    }
+    .signin__form{
+      border-left: none;
+      border-top: 1px solid #D19F94;
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+    .signup__form{
+      margin-bottom: 20px;
+    }
+    .signin__form, .signup__form{
+      width: 100%;
+
+    }
+    .input__elt{
+      width: 70%;
+    }
+    .btn{
+      width: 35%;
+    }
   }
 </style>

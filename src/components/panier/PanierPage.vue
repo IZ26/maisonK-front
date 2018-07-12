@@ -168,4 +168,36 @@
     font-family: Montez;
     font-size: 30px;
   }
+  .payment{
+    text-decoration: none;
+    color: #fff;
+    background: #D19F94;
+    width: 20%;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media all and (max-width: 720px){
+    .product__block{
+      width: 100%;
+      border-right: none;
+      border-left: none;
+    }
+    .img__product{
+      width: 40%;
+    }
+    .product__content{
+      width: 70%;
+    }
+    .price__product{
+      width: 20%;
+    }
+    .change__quantity{
+      width: 100%;
+    }
+    .name{
+      font-size: 12px;
+    }
+  }
 </style>

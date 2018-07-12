@@ -144,7 +144,7 @@
     }
     .bg__img__responsive{
       width: 100%;
-      height: 300px;
+      height: 320px;
       background-image: url("../../assets/images/home/soiree_israel.png");
       background-size: contain;
       background-repeat: no-repeat;

@@ -139,11 +139,11 @@
     }
     .bg__img__responsive{
       width: 100%;
-      height: 300px;
+      height: 320px;
       background-image: url("../../assets/images/home/tarte_grollet.png");
+      background-position: center;
       background-size: contain;
       background-repeat: no-repeat;
-      background-position: center;
       margin-bottom: 20px;
     }
     .content__text__container{

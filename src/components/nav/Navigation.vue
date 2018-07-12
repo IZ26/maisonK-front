@@ -72,45 +72,15 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
     position: relative;
-    -webkit-transition-property: color;
-    transition-property: color;
-    -webkit-transition-duration: 0.5s;
-    transition-duration: 0.5s;
     padding-top: 20px;
     padding-bottom: 20px;
+    transition: .5s;
   }
-  .link__bottom:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  .link__bottom:hover{
     background: rgba(209, 159, 148,1);
-    -webkit-transform: scaleY(0);
-    transform: scaleY(0);
-    -webkit-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-    -webkit-transition-property: transform;
-    transition-property: transform;
-    -webkit-transition-duration: 0.5s;
-    transition-duration: 0.5s;
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
-  }
-  .link__bottom:hover, .link__bottom:active {
-    color: white;
-  }
-  .link__bottom:hover:before, .link__bottom:active:before {
-    -webkit-transform: scaleY(1);
-    transform: scaleY(1);
-  }
-  .right__nav > .link__bottom:last-child{
-    border-right: none;
+    color: #fff;
+    transition: .5s;
   }
   @media all and (max-width: 720px) {
     .header__top{

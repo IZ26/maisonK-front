@@ -30,7 +30,6 @@
       <div class="product__list">
         <draggable v-model="products" id="list__container"
                    :options="{group:{name:'product', pull: 'clone', put: false }}"
-                   @start="isDragging=true"
                    @end="onAdd"
                    :move="onMove"
         >
@@ -83,7 +82,7 @@
         products: [],
         newCart: [],
         isDragging: false,
-        ttcPrice: [],
+        ttcPrice: []
       }
     },
     methods: {
@@ -388,6 +387,19 @@
     .nav__menu > div:last-child {
       border-left: 1px solid #D19F94;
       box-sizing: border-box;
+    }
+    .product{
+      flex-direction: column-reverse;
+    }
+    .product__list{
+      width: 100%;
+    }
+    .cart {
+      width: 95%;
+      margin-left: 2.5%;
+    }
+    .card__products{
+      width: 47%;
     }
   }
 </style>
