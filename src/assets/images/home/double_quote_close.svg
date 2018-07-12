@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 17.5">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #d19f94;
+      }
+    </style>
+  </defs>
+  <path id="Tracé_54" data-name="Tracé 54" class="cls-1" d="M0,0V8.75H5a5.015,5.015,0,0,1-5,5V17.5A8.858,8.858,0,0,0,8.75,8.75V0ZM11.25,0V8.75h5a5.015,5.015,0,0,1-5,5V17.5A8.858,8.858,0,0,0,20,8.75V0Z"/>
+</svg>
