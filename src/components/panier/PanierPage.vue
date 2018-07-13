@@ -62,9 +62,11 @@
     mounted(){
       this.openMenu()
       this.cart = this.getCart
+      let price = 0
       for (let i = 0; i < this.cart.length; i++) {
-        this.ttcPrice.push(this.cart[i].totalPrice)
+        price += parseFloat(this.cart[i].totalPrice)
       }
+      this.ttcPrice = price
     }
   }
 </script>
