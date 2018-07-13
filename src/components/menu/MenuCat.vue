@@ -127,7 +127,7 @@
       ])
     },
     mounted() {
-      this.$http.get(`http://localhost:3000/products/all`)
+      this.$http.get(`https://maisonk.tk/products/all`)
         .then(response => {
           this.all = response.data
           this.all.forEach((product) => {
