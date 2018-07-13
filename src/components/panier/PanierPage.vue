@@ -43,12 +43,24 @@
         this.cart = [].concat(this.cart)
         this.cart[index].quantity++
         this.cart[index].totalPrice = this.cart[index].price * this.cart[index].quantity
+        this.addProduct(this.cart)
+        let price = 0
+        for (let i = 0; i < this.cart.length; i++) {
+          price += parseFloat(this.cart[i].totalPrice)
+        }
+        this.ttcPrice = price
       },
       removeProduct(index){
         this.cart = [].concat(this.cart)
         if(this.cart[index].quantity >= 1){
           this.cart[index].quantity--
           this.cart[index].totalPrice = this.cart[index].price * this.cart[index].quantity
+          this.addProduct(this.cart)
+          let price = 0
+          for (let i = 0; i < this.cart.length; i++) {
+            price += parseFloat(this.cart[i].totalPrice)
+          }
+          this.ttcPrice = price
         }else{
           this.cart[index].quantity = 0
         }
